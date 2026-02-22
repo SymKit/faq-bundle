@@ -9,6 +9,5 @@ infection-summary.log
 phpunit.xml
 phpstan.neon
 *.log
-.cursor/
 .agent/
 .claude/
