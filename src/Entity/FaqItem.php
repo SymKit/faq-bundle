@@ -6,18 +6,20 @@ namespace Symkit\FaqBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symkit\FaqBundle\Contract\FaqItemPositionableInterface;
 use Symkit\FaqBundle\Repository\FaqItemRepository;
 
 #[ORM\Entity(repositoryClass: FaqItemRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class FaqItem
+class FaqItem implements FaqItemPositionableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    /** @phpstan-ignore-next-line property.unusedType (Doctrine assigns id on persist) */
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Faq::class, inversedBy: 'getFaqItems')]
+    #[ORM\ManyToOne(targetEntity: Faq::class, inversedBy: 'faqItems')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Assert\NotNull(groups: ['create', 'edit'])]
     private ?Faq $faq = null;
@@ -34,7 +36,7 @@ class FaqItem
     #[ORM\Column]
     #[Assert\NotNull(groups: ['create', 'edit'])]
     #[Assert\PositiveOrZero(groups: ['create', 'edit'])]
-    private ?int $position = 0;
+    private int $position = 0;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -96,7 +98,7 @@ class FaqItem
         return $this;
     }
 
-    public function getPosition(): ?int
+    public function getPosition(): int
     {
         return $this->position;
     }

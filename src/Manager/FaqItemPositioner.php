@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symkit\FaqBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Symkit\FaqBundle\Contract\FaqItemPositionableInterface;
 
 final readonly class FaqItemPositioner
 {
@@ -17,13 +18,12 @@ final readonly class FaqItemPositioner
     ) {
     }
 
-    public function reorderPositions(object $faqItem): void
+    public function reorderPositions(FaqItemPositionableInterface $faqItem): void
     {
         if (!$faqItem instanceof $this->faqItemClass) {
             return;
         }
 
-        // Narrowed type for PHPStan: $faqItem is instance of $this->faqItemClass (entity with getFaq, getPosition, getId, setPosition)
         $faq = $faqItem->getFaq();
         if (!$faq) {
             return;
@@ -46,7 +46,7 @@ final readonly class FaqItemPositioner
             ;
         }
 
-        /** @var list<object> $existingItems */
+        /** @var list<FaqItemPositionableInterface> $existingItems */
         $existingItems = $qb->getQuery()->getResult();
 
         $orderedItems = [];
@@ -65,10 +65,7 @@ final readonly class FaqItemPositioner
         }
 
         foreach ($orderedItems as $index => $item) {
-            /** @var object $item */
-            if (method_exists($item, 'setPosition')) {
-                $item->setPosition($index);
-            }
+            $item->setPosition($index);
         }
 
         $this->entityManager->flush();

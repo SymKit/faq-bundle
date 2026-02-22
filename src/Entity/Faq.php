@@ -17,6 +17,7 @@ class Faq
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    /** @phpstan-ignore-next-line property.unusedType (Doctrine assigns id on persist) */
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -41,11 +42,11 @@ class Faq
      */
     #[ORM\OneToMany(targetEntity: FaqItem::class, mappedBy: 'faq', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[ORM\OrderBy(['position' => 'ASC'])]
-    private Collection $getFaqItems;
+    private Collection $faqItems;
 
     public function __construct()
     {
-        $this->getFaqItems = new ArrayCollection();
+        $this->faqItems = new ArrayCollection();
     }
 
     #[ORM\PrePersist]
@@ -105,13 +106,13 @@ class Faq
      */
     public function getFaqItems(): Collection
     {
-        return $this->getFaqItems;
+        return $this->faqItems;
     }
 
     public function addFaqItem(FaqItem $faqItem): static
     {
-        if (!$this->getFaqItems->contains($faqItem)) {
-            $this->getFaqItems->add($faqItem);
+        if (!$this->faqItems->contains($faqItem)) {
+            $this->faqItems->add($faqItem);
             $faqItem->setFaq($this);
         }
 
@@ -120,7 +121,7 @@ class Faq
 
     public function removeFaqItem(FaqItem $faqItem): static
     {
-        if ($this->getFaqItems->removeElement($faqItem)) {
+        if ($this->faqItems->removeElement($faqItem)) {
             if ($faqItem->getFaq() === $this) {
                 $faqItem->setFaq(null);
             }

@@ -1,17 +1,18 @@
 grumphp:
     tasks:
-        make:
-            task: deptrac
-            triggered_by: [php]
+        phpcsfixer:
+            config: .php-cs-fixer.dist.php
         phpstan:
             configuration: phpstan.neon.dist
             memory_limit: 512M
             use_grumphp_paths: false
-        phpcsfixer:
-            config: .php-cs-fixer.dist.php
+        make:
+            task: deptrac
+            triggered_by: [php]
         phpunit:
             config_file: phpunit.xml.dist
         shell:
             scripts:
+                - ['-c', 'make lint']
                 - ['-c', 'make infection']
             triggered_by: [php]

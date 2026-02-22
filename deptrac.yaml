@@ -46,6 +46,7 @@ deptrac:
   ruleset:
     Contract: []
     Entity:
+      - Contract
       - Repository
     Repository:
       - Contract
@@ -57,8 +58,10 @@ deptrac:
     Form:
       - Entity
     Manager:
+      - Contract
       - Entity
     EventListener:
+      - Contract
       - Manager
       - Entity
     Routing: []

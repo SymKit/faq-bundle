@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use PHPUnit\Framework\TestCase;
+use Symkit\FaqBundle\Contract\FaqItemPositionableInterface;
 use Symkit\FaqBundle\Entity\Faq;
 use Symkit\FaqBundle\Entity\FaqItem;
 use Symkit\FaqBundle\Manager\FaqItemPositioner;
@@ -20,8 +21,30 @@ final class FaqItemPositionerTest extends TestCase
         $em->expects(self::never())->method('createQueryBuilder');
         $em->expects(self::never())->method('flush');
 
+        $stub = new class implements FaqItemPositionableInterface {
+            public function getFaq(): ?object
+            {
+                return null;
+            }
+
+            public function getPosition(): int
+            {
+                return 0;
+            }
+
+            public function getId(): ?int
+            {
+                return null;
+            }
+
+            public function setPosition(int $position): static
+            {
+                return $this;
+            }
+        };
+
         $positioner = new FaqItemPositioner($em, FaqItem::class);
-        $positioner->reorderPositions(new \stdClass());
+        $positioner->reorderPositions($stub);
     }
 
     public function testReorderPositionsEarlyReturnWhenFaqIsNull(): void

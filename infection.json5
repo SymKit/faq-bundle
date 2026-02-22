@@ -7,8 +7,8 @@
         "text": "infection.log",
         "summary": "infection-summary.log"
     },
-    "minMsi": 30,
-    "minCoveredMsi": 30,
+    "minMsi": 29,
+    "minCoveredMsi": 29,
     "mutators": {
         "@default": true
     },

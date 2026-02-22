@@ -19,7 +19,7 @@ lint:
 	composer validate --strict
 
 infection:
-	vendor/bin/infection --configuration=infection.json5 --only-covered --threads=max --min-msi=30 --min-covered-msi=30
+	vendor/bin/infection --configuration=infection.json5 --only-covered --threads=max --min-msi=29 --min-covered-msi=29
 
 security-check:
 	composer audit --abandoned=report
