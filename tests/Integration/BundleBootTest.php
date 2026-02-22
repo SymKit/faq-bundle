@@ -57,4 +57,16 @@ final class BundleBootTest extends KernelTestCase
         self::assertTrue($container->hasParameter('symkit_faq.entity.faq_class'));
         self::assertSame('Symkit\FaqBundle\Entity\Faq', $container->getParameter('symkit_faq.entity.faq_class'));
     }
+
+    public function testAllEntityAndRouteParametersAreSet(): void
+    {
+        self::bootKernel();
+        $container = static::getContainer();
+        self::assertSame('Symkit\FaqBundle\Entity\Faq', $container->getParameter('symkit_faq.entity.faq_class'));
+        self::assertSame('Symkit\FaqBundle\Repository\FaqRepository', $container->getParameter('symkit_faq.entity.faq_repository_class'));
+        self::assertSame('Symkit\FaqBundle\Entity\FaqItem', $container->getParameter('symkit_faq.entity.faq_item_class'));
+        self::assertSame('Symkit\FaqBundle\Repository\FaqItemRepository', $container->getParameter('symkit_faq.entity.faq_item_repository_class'));
+        self::assertSame('/admin', $container->getParameter('symkit_faq.admin.route_prefix'));
+        self::assertSame('/faq', $container->getParameter('symkit_faq.public.route_prefix'));
+    }
 }
