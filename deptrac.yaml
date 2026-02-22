@@ -3,6 +3,11 @@ deptrac:
     - src/
 
   layers:
+    - name: Contract
+      collectors:
+        - type: directory
+          value: src/Contract/.*
+
     - name: Entity
       collectors:
         - type: directory
@@ -33,14 +38,21 @@ deptrac:
         - type: directory
           value: src/EventListener/.*
 
+    - name: Routing
+      collectors:
+        - type: directory
+          value: src/Routing/.*
+
   ruleset:
+    Contract: []
     Entity:
       - Repository
     Repository:
+      - Contract
       - Entity
     Controller:
+      - Contract
       - Entity
-      - Repository
       - Form
     Form:
       - Entity
@@ -49,3 +61,4 @@ deptrac:
     EventListener:
       - Manager
       - Entity
+    Routing: []

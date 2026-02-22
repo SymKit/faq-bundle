@@ -27,6 +27,9 @@
             <trans-unit id="admin.faq_item.edit.description" resname="admin.faq_item.edit.description">
                 <source>Update FAQ item details.</source>
             </trans-unit>
+            <trans-unit id="admin.faq_item.edit.title" resname="admin.faq_item.edit.title">
+                <source>Edit: %question%</source>
+            </trans-unit>
             <trans-unit id="admin.faq.not_found" resname="admin.faq.not_found">
                 <source>FAQ not found</source>
             </trans-unit>

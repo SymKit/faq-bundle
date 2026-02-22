@@ -8,14 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symkit\CrudBundle\Controller\AbstractCrudController;
+use Symkit\FaqBundle\Contract\FaqByIdResolverInterface;
 use Symkit\FaqBundle\Entity\Faq;
 use Symkit\FaqBundle\Entity\FaqItem;
-use Symkit\FaqBundle\Repository\FaqRepository;
 
 final class FaqItemController extends AbstractCrudController
 {
     public function __construct(
-        private readonly FaqRepository $faqRepository,
+        private readonly FaqByIdResolverInterface $faqByIdResolver,
         private readonly string $faqItemClass,
         private readonly string $faqItemFormClass,
         private readonly TranslatorInterface $translator,
@@ -39,7 +39,7 @@ final class FaqItemController extends AbstractCrudController
 
     public function create(int $faqId, Request $request): Response
     {
-        $faq = $this->faqRepository->find($faqId);
+        $faq = $this->faqByIdResolver->findFaqById($faqId);
         if (!$faq instanceof Faq) {
             throw $this->createNotFoundException($this->translator->trans('admin.faq.not_found', [], 'SymkitFaqBundle'));
         }
@@ -65,8 +65,10 @@ final class FaqItemController extends AbstractCrudController
 
     public function edit(FaqItem $item, Request $request): Response
     {
+        $questionSummary = mb_substr($item->getQuestion() ?? '', 0, 40).'...';
+
         return $this->renderEdit($item, $request, [
-            'page_title' => 'Edit: '.mb_substr($item->getQuestion() ?? '', 0, 40).'...',
+            'page_title' => $this->translator->trans('admin.faq_item.edit.title', ['%question%' => $questionSummary], 'SymkitFaqBundle'),
             'page_description' => $this->translator->trans('admin.faq_item.edit.description', [], 'SymkitFaqBundle'),
             'template_vars' => [
                 'back_route' => 'admin_faq_edit',

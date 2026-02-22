@@ -1,5 +1,14 @@
-# FAQ Bundle routes. In your app config/routes.yaml, add:
-# symkit_faq:
+# FAQ Bundle routes.
+#
+# Option A — Configurable route prefixes (recommended): use the route loader so
+# admin.route_prefix and public.route_prefix from config are applied. In your app
+# config/routes.yaml add:
+#   symkit_faq:
+#     resource: 'symkit_faq.route_loader::loadRoutes'
+#     type: service
+#
+# Option B — Fixed paths (/admin, /faq): import this file:
+#   symkit_faq:
 #     resource: '@SymkitFaqBundle/config/routes.yaml'
 
 admin_faq_list:

@@ -4,29 +4,30 @@ declare(strict_types=1);
 
 namespace Symkit\FaqBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symkit\FaqBundle\Repository\FaqRepository;
+use Symkit\FaqBundle\Contract\FaqByCodeResolverInterface;
+use Twig\Environment;
 
-final class FaqController extends AbstractController
+final readonly class FaqController
 {
     public function __construct(
-        private readonly FaqRepository $faqRepository,
+        private FaqByCodeResolverInterface $faqByCodeResolver,
+        private Environment $twig,
     ) {
     }
 
     public function show(string $code): Response
     {
-        $faq = $this->faqRepository->findByCode($code);
+        $faq = $this->faqByCodeResolver->findByCode($code);
 
         if (!$faq) {
-            return $this->render('@SymkitFaq/faq/components/_not_found.html.twig', [
+            return new Response($this->twig->render('@SymkitFaq/faq/components/_not_found.html.twig', [
                 'code' => $code,
-            ]);
+            ]));
         }
 
-        return $this->render('@SymkitFaq/faq/components/_faq.html.twig', [
+        return new Response($this->twig->render('@SymkitFaq/faq/components/_faq.html.twig', [
             'faq' => $faq,
-        ]);
+        ]));
     }
 }

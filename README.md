@@ -77,7 +77,17 @@ If you use custom entity or repository classes (e.g. extending the defaults), co
 
 ## Routes
 
-Import the bundle routes in your application `config/routes.yaml`:
+Import the bundle routes in your application `config/routes.yaml`.
+
+**Configurable prefixes** (recommended; uses `admin.route_prefix` and `public.route_prefix` from config):
+
+```yaml
+symkit_faq:
+    resource: 'symkit_faq.route_loader::loadRoutes'
+    type: service
+```
+
+**Fixed paths** (`/admin`, `/faq`):
 
 ```yaml
 symkit_faq:

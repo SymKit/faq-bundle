@@ -35,6 +35,10 @@
                 <source>Update FAQ item details.</source>
                 <target>Modifier les détails de l'élément FAQ.</target>
             </trans-unit>
+            <trans-unit id="admin.faq_item.edit.title" resname="admin.faq_item.edit.title">
+                <source>Edit: %question%</source>
+                <target>Modifier : %question%</target>
+            </trans-unit>
             <trans-unit id="admin.faq.not_found" resname="admin.faq.not_found">
                 <source>FAQ not found</source>
                 <target>FAQ introuvable</target>

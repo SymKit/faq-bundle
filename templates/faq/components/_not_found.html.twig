@@ -1,3 +1,4 @@
+{% trans_default_domain 'SymkitFaqBundle' %}
 <div class="bg-red-50 dark:bg-red-400/10 border border-red-100 dark:border-red-400/20 rounded-2xl p-8 my-8 text-center">
     <div class="flex flex-col items-center gap-4">
         <div
@@ -5,11 +6,11 @@
             {{ ux_icon('heroicons:exclamation-triangle', {class: 'w-6 h-6'}) }}
         </div>
         <div>
-            <h4 class="text-sm font-black text-red-900 dark:text-red-400 uppercase tracking-tight">{{ 'not_found.title'|trans({}, 'SymkitFaqBundle') }}</h4>
-            <p class="text-[10px] text-red-600 dark:text-red-500/70 font-bold uppercase tracking-widest mt-0.5">{{ 'not_found.code_label'|trans({}, 'SymkitFaqBundle') }}</p>
+            <h4 class="text-sm font-black text-red-900 dark:text-red-400 uppercase tracking-tight">{{ 'not_found.title'|trans }}</h4>
+            <p class="text-[10px] text-red-600 dark:text-red-500/70 font-bold uppercase tracking-widest mt-0.5">{{ 'not_found.code_label'|trans }}</p>
             <span
                 class="inline-block mt-2 font-mono text-sm px-2 py-1 bg-red-100 dark:bg-red-400/20 rounded font-black text-red-700 dark:text-red-400">{{ code }}</span>
         </div>
-        <p class="text-xs text-red-500 font-medium italic mt-2">{{ 'not_found.hint'|trans({}, 'SymkitFaqBundle') }}</p>
+        <p class="text-xs text-red-500 font-medium italic mt-2">{{ 'not_found.hint'|trans }}</p>
     </div>
 </div>

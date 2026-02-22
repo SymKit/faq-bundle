@@ -8,6 +8,8 @@ use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+use Symkit\FaqBundle\Contract\FaqByCodeResolverInterface;
+use Symkit\FaqBundle\Contract\FaqByIdResolverInterface;
 use Symkit\FaqBundle\Entity\Faq;
 use Symkit\FaqBundle\Entity\FaqItem;
 use Symkit\FaqBundle\Repository\FaqItemRepository;
@@ -103,6 +105,8 @@ class SymkitFaqBundle extends AbstractBundle
             $services->set($config['entity']['faq_item_repository_class'])
                 ->arg('$entityClass', '%symkit_faq.entity.faq_item_class%')
                 ->tag('doctrine.repository_service');
+            $services->alias(FaqByCodeResolverInterface::class, $config['entity']['faq_repository_class']);
+            $services->alias(FaqByIdResolverInterface::class, $config['entity']['faq_repository_class']);
         }
 
         if ($config['admin']['enabled']) {
@@ -123,6 +127,10 @@ class SymkitFaqBundle extends AbstractBundle
         if ($config['public']['enabled']) {
             $services->set(Controller\FaqController::class)->tag('controller.service_arguments');
         }
+
+        $services->set('symkit_faq.route_loader', Routing\FaqRouteLoader::class)
+            ->arg('$adminRoutePrefix', '%symkit_faq.admin.route_prefix%')
+            ->arg('$publicRoutePrefix', '%symkit_faq.public.route_prefix%');
 
         if ($config['doctrine']['enabled']) {
             $services->set(Manager\FaqItemPositioner::class)
