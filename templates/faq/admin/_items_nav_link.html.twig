@@ -1,0 +1,12 @@
+<li>
+    <a href="#faq-items-section"
+        class="flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-white dark:hover:bg-white/10"
+        data-crud--section-nav-target="link">
+        {{ ux_icon('heroicons:chat-bubble-left-right-20-solid', {class: 'w-5 h-5 text-slate-400'}) }}
+        {{ 'admin.items_nav'|trans({}, 'SymkitFaqBundle') }}
+        <span
+            class="ml-auto inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/10 px-2 py-0.5 text-xs text-slate-600 dark:text-gray-300">
+            {{ faq.getFaqItems|length }}
+        </span>
+    </a>
+</li>

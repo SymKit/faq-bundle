@@ -1,0 +1,43 @@
+{# FAQ Section #}
+<div class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-white/5 mt-16">
+    <div class="mx-auto max-w-7xl px-0 py-24 sm:py-32 lg:py-40">
+        <div class="mx-auto max-w-4xl">
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl dark:text-white">{{ faq.title }}
+            </h2>
+            <dl class="mt-16 divide-y divide-gray-900/10 dark:divide-white/10" data-controller="faq">
+                {% for item in faq.faqItems %}
+                <div class="py-6 first:pt-0 last:pb-0" data-faq-target="item">
+                    <dt>
+                        <button type="button" data-action="faq#toggle" data-faq-target="button"
+                            aria-expanded="{{ loop.first ? 'true' : 'false' }}" aria-controls="faq-item-{{ item.id }}"
+                            class="group flex w-full items-start justify-between text-left text-gray-900 dark:text-white">
+                            <span class="text-base/7 font-semibold">{{ item.question }}</span>
+                            <span class="ml-6 flex h-7 items-center">
+                                <!-- Plus icon (shown when closed) -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    data-slot="icon" aria-hidden="true" class="size-6 block group-aria-expanded:hidden">
+                                    <path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <!-- Minus icon (shown when expanded) -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    data-slot="icon" aria-hidden="true" class="size-6 hidden group-aria-expanded:block">
+                                    <path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </button>
+                    </dt>
+                    <div id="faq-item-{{ item.id }}" data-faq-target="content"
+                        class="{{ loop.first ? '' : 'hidden' }} contents">
+                        <dd class="mt-2 pr-12">
+                            <div
+                                class="text-base/7 text-gray-600 dark:text-gray-400 prose dark:prose-invert max-w-none">
+                                {{ item.answer|raw }}
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                {% endfor %}
+            </dl>
+        </div>
+    </div>
+</div>

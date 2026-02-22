@@ -1,0 +1,73 @@
+<div class="max-w-7xl mx-auto">
+    <section id="faq-items-section" class="scroll-mt-28" data-crud--section-nav-target="section">
+        <div
+            class="bg-white dark:bg-gray-800/50 rounded-xl shadow-sm border border-slate-200 dark:border-white/10 overflow-visible">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-0">
+                {# Section Header (Left side on desktop) #}
+                <div
+                    class="lg:col-span-1 bg-slate-50/80 dark:bg-white/5 p-6 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-white/5">
+                    <h3 class="text-base font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                        {{ ux_icon('heroicons:chat-bubble-left-right-20-solid', {class: 'w-5 h-5 text-slate-500
+                        dark:text-gray-400'}) }}
+                        {{ 'admin.items_section.title'|trans({}, 'SymkitFaqBundle') }}
+                    </h3>
+                    <p class="mt-1 text-xs text-slate-500 dark:text-gray-400 leading-relaxed">
+                        {{ 'admin.items_section.description'|trans({}, 'SymkitFaqBundle') }}
+                    </p>
+                    <a href="{{ path('admin_faq_item_create', {faqId: faq.id}) }}"
+                        class="mt-4 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 transition-colors">
+                        {{ ux_icon('heroicons:plus-20-solid', {class: 'w-4 h-4'}) }}
+                        {{ 'admin.items_section.add'|trans({}, 'SymkitFaqBundle') }}
+                    </a>
+                </div>
+
+                {# Items List (Right side on desktop) #}
+                <div class="lg:col-span-2 p-6">
+                    {% if faq.getFaqItems|length > 0 %}
+                    <div class="-mx-2">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="border-b border-slate-100 dark:border-white/5">
+                                    <th
+                                        class="py-2 px-2 text-left text-xs font-semibold text-slate-500 dark:text-gray-400 uppercase tracking-wider">
+                                        {{ 'admin.items_section.question'|trans({}, 'SymkitFaqBundle') }}</th>
+                                    <th
+                                        class="py-2 px-2 text-left text-xs font-semibold text-slate-500 dark:text-gray-400 uppercase tracking-wider">
+                                        {{ 'admin.items_section.position'|trans({}, 'SymkitFaqBundle') }}</th>
+                                    <th
+                                        class="py-2 px-2 text-right text-xs font-semibold text-slate-500 dark:text-gray-400 uppercase tracking-wider">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-white/5">
+                                {% for item in faq.getFaqItems %}
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                    <td class="py-3 px-2 text-sm font-medium text-slate-900 dark:text-white">
+                                        {{ item.question|u.truncate(60, '...') }}
+                                    </td>
+                                    <td class="py-3 px-2 text-sm text-slate-500 dark:text-gray-400">{{ item.position }}
+                                    </td>
+                                    <td class="py-3 px-2 text-sm text-right">
+                                        <a href="{{ path('admin_faq_item_edit', {id: item.id}) }}"
+                                            class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium">
+                                            {{ 'admin.items_section.edit'|trans({}, 'SymkitFaqBundle') }}
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-8 text-slate-500 dark:text-gray-400">
+                        {{ ux_icon('heroicons:inbox-20-solid', {class: 'mx-auto h-10 w-10 text-slate-300
+                        dark:text-white/10 mb-3'}) }}
+                        <p class="text-sm font-medium text-slate-900 dark:text-white">{{ 'admin.items_section.empty_title'|trans({}, 'SymkitFaqBundle') }}</p>
+                        <p class="text-xs mt-1">{{ 'admin.items_section.empty_description'|trans({}, 'SymkitFaqBundle') }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

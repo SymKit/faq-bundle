@@ -1,0 +1,51 @@
+deptrac:
+  paths:
+    - src/
+
+  layers:
+    - name: Entity
+      collectors:
+        - type: directory
+          value: src/Entity/.*
+
+    - name: Repository
+      collectors:
+        - type: directory
+          value: src/Repository/.*
+
+    - name: Controller
+      collectors:
+        - type: directory
+          value: src/Controller/.*
+
+    - name: Form
+      collectors:
+        - type: directory
+          value: src/Form/.*
+
+    - name: Manager
+      collectors:
+        - type: directory
+          value: src/Manager/.*
+
+    - name: EventListener
+      collectors:
+        - type: directory
+          value: src/EventListener/.*
+
+  ruleset:
+    Entity:
+      - Repository
+    Repository:
+      - Entity
+    Controller:
+      - Entity
+      - Repository
+      - Form
+    Form:
+      - Entity
+    Manager:
+      - Entity
+    EventListener:
+      - Manager
+      - Entity

@@ -1,0 +1,13 @@
+parameters:
+    level: 9
+    paths:
+        - src/
+        - tests/
+    tmpDir: .phpstan-cache
+    ignoreErrors:
+        -
+            message: '#Call to an undefined method object::#'
+            path: src/Manager/FaqItemPositioner.php
+        -
+            message: '#Property .* is never assigned .* so it can be removed from the property type#'
+            path: src/Entity/*.php

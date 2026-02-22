@@ -1,0 +1,53 @@
+# FAQ Bundle routes. In your app config/routes.yaml, add:
+# symkit_faq:
+#     resource: '@SymkitFaqBundle/config/routes.yaml'
+
+admin_faq_list:
+    path: /admin/faqs
+    controller: Symkit\FaqBundle\Controller\Admin\FaqController::list
+    methods: [GET]
+
+admin_faq_create:
+    path: /admin/faqs/create
+    controller: Symkit\FaqBundle\Controller\Admin\FaqController::create
+    methods: [GET, POST]
+
+admin_faq_edit:
+    path: /admin/faqs/{id}/edit
+    controller: Symkit\FaqBundle\Controller\Admin\FaqController::edit
+    methods: [GET, POST]
+    requirements:
+        id: '\d+'
+
+admin_faq_delete:
+    path: /admin/faqs/{id}/delete
+    controller: Symkit\FaqBundle\Controller\Admin\FaqController::delete
+    methods: [POST]
+    requirements:
+        id: '\d+'
+
+admin_faq_item_create:
+    path: /admin/faqs/{faqId}/items/create
+    controller: Symkit\FaqBundle\Controller\Admin\FaqItemController::create
+    methods: [GET, POST]
+    requirements:
+        faqId: '\d+'
+
+admin_faq_item_edit:
+    path: /admin/faq-items/{id}/edit
+    controller: Symkit\FaqBundle\Controller\Admin\FaqItemController::edit
+    methods: [GET, POST]
+    requirements:
+        id: '\d+'
+
+admin_faq_item_delete:
+    path: /admin/faq-items/{id}/delete
+    controller: Symkit\FaqBundle\Controller\Admin\FaqItemController::delete
+    methods: [POST]
+    requirements:
+        id: '\d+'
+
+symkit_faq_show:
+    path: /faq/{code}
+    controller: Symkit\FaqBundle\Controller\FaqController::show
+    methods: [GET]

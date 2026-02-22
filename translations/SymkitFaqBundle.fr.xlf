@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="SymkitFaqBundle">
+        <header/>
+        <body>
+            <trans-unit id="admin.faq.list.title" resname="admin.faq.list.title">
+                <source>FAQs</source>
+                <target>FAQ</target>
+            </trans-unit>
+            <trans-unit id="admin.faq.list.description" resname="admin.faq.list.description">
+                <source>Manage FAQ blocks.</source>
+                <target>Gérer les blocs FAQ.</target>
+            </trans-unit>
+            <trans-unit id="admin.faq.create.title" resname="admin.faq.create.title">
+                <source>Create FAQ</source>
+                <target>Créer une FAQ</target>
+            </trans-unit>
+            <trans-unit id="admin.faq.create.description" resname="admin.faq.create.description">
+                <source>Create a new FAQ block.</source>
+                <target>Créer un nouveau bloc FAQ.</target>
+            </trans-unit>
+            <trans-unit id="admin.faq.edit.description" resname="admin.faq.edit.description">
+                <source>Manage FAQ and its items.</source>
+                <target>Gérer la FAQ et ses éléments.</target>
+            </trans-unit>
+            <trans-unit id="admin.faq_item.create.title" resname="admin.faq_item.create.title">
+                <source>Create FAQ Item</source>
+                <target>Créer un élément FAQ</target>
+            </trans-unit>
+            <trans-unit id="admin.faq_item.create.description" resname="admin.faq_item.create.description">
+                <source>Add a new item to "%title%".</source>
+                <target>Ajouter un élément à « %title% ».</target>
+            </trans-unit>
+            <trans-unit id="admin.faq_item.edit.description" resname="admin.faq_item.edit.description">
+                <source>Update FAQ item details.</source>
+                <target>Modifier les détails de l'élément FAQ.</target>
+            </trans-unit>
+            <trans-unit id="admin.faq.not_found" resname="admin.faq.not_found">
+                <source>FAQ not found</source>
+                <target>FAQ introuvable</target>
+            </trans-unit>
+            <trans-unit id="form.faq.section.general" resname="form.faq.section.general">
+                <source>General</source>
+                <target>Général</target>
+            </trans-unit>
+            <trans-unit id="form.faq.section.description" resname="form.faq.section.description">
+                <source>Basic information about the FAQ block.</source>
+                <target>Informations de base sur le bloc FAQ.</target>
+            </trans-unit>
+            <trans-unit id="form.faq.title" resname="form.faq.title">
+                <source>Title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="form.faq.title_placeholder" resname="form.faq.title_placeholder">
+                <source>e.g., General FAQ</source>
+                <target>ex. FAQ générale</target>
+            </trans-unit>
+            <trans-unit id="form.faq.code" resname="form.faq.code">
+                <source>Code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="form.faq.code_help" resname="form.faq.code_help">
+                <source>Unique identifier for the Twig function (lowercase, hyphens only).</source>
+                <target>Identifiant unique pour la fonction Twig (minuscules, tirets uniquement).</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.section.general" resname="form.faq_item.section.general">
+                <source>Question and Answer</source>
+                <target>Question et réponse</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.section.description" resname="form.faq_item.section.description">
+                <source>Details of the FAQ question.</source>
+                <target>Détails de la question FAQ.</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.question" resname="form.faq_item.question">
+                <source>Question</source>
+                <target>Question</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.question_placeholder" resname="form.faq_item.question_placeholder">
+                <source>e.g., How does this work?</source>
+                <target>ex. Comment ça marche ?</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.question_help" resname="form.faq_item.question_help">
+                <source>The question as it will be displayed in the accordion.</source>
+                <target>La question telle qu'elle apparaîtra dans l'accordéon.</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.answer" resname="form.faq_item.answer">
+                <source>Answer</source>
+                <target>Réponse</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.answer_placeholder" resname="form.faq_item.answer_placeholder">
+                <source>Detailed answer (HTML allowed)</source>
+                <target>Réponse détaillée (HTML autorisé)</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.answer_help" resname="form.faq_item.answer_help">
+                <source>The detailed answer. You can use HTML tags.</source>
+                <target>La réponse détaillée. Vous pouvez utiliser des balises HTML.</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.position" resname="form.faq_item.position">
+                <source>Position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="form.faq_item.position_help" resname="form.faq_item.position_help">
+                <source>Display order (0 for the first position).</source>
+                <target>Ordre d'affichage (0 pour la première position).</target>
+            </trans-unit>
+            <trans-unit id="list.title" resname="list.title">
+                <source>Title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="list.code" resname="list.code">
+                <source>Code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="list.items" resname="list.items">
+                <source>Items</source>
+                <target>Éléments</target>
+            </trans-unit>
+            <trans-unit id="validation.faq.code.regex" resname="validation.faq.code.regex">
+                <source>The code must contain only lowercase letters, numbers, and hyphens.</source>
+                <target>Le code ne doit contenir que des minuscules, chiffres et tirets.</target>
+            </trans-unit>
+            <trans-unit id="admin.items_nav" resname="admin.items_nav">
+                <source>Items</source>
+                <target>Éléments</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.title" resname="admin.items_section.title">
+                <source>FAQ Items</source>
+                <target>Éléments FAQ</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.description" resname="admin.items_section.description">
+                <source>Manage questions and answers for this FAQ block.</source>
+                <target>Gérer les questions et réponses de ce bloc FAQ.</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.add" resname="admin.items_section.add">
+                <source>Add Item</source>
+                <target>Ajouter un élément</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.question" resname="admin.items_section.question">
+                <source>Question</source>
+                <target>Question</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.position" resname="admin.items_section.position">
+                <source>Position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.edit" resname="admin.items_section.edit">
+                <source>Edit</source>
+                <target>Modifier</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.empty_title" resname="admin.items_section.empty_title">
+                <source>No items yet</source>
+                <target>Aucun élément pour l'instant</target>
+            </trans-unit>
+            <trans-unit id="admin.items_section.empty_description" resname="admin.items_section.empty_description">
+                <source>Add your first question to get started.</source>
+                <target>Ajoutez votre première question pour commencer.</target>
+            </trans-unit>
+            <trans-unit id="not_found.title" resname="not_found.title">
+                <source>FAQ Not Found</source>
+                <target>FAQ introuvable</target>
+            </trans-unit>
+            <trans-unit id="not_found.code_label" resname="not_found.code_label">
+                <source>Missing configuration for code:</source>
+                <target>Configuration manquante pour le code :</target>
+            </trans-unit>
+            <trans-unit id="not_found.hint" resname="not_found.hint">
+                <source>Check the FAQ standalone manager to ensure this code exists and is correctly typed.</source>
+                <target>Vérifiez le gestionnaire FAQ pour vous assurer que ce code existe et est correctement saisi.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
